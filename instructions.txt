@@ -1,0 +1,17 @@
+1. Créer le fichier schema.yml et commencer à compléter ses sources à partir du dataset "raw_data_circle"
+2. Changer le nom du dataset et des tables dans le schema
+3. Ajouter les tests sur les sources pour les clés primaires
+4. Générér les models associés au tables du dataset en modifiant les types de données et les colonnes
+5. Créer le model "cc_parcel" qui doit contenir:
+    parcel_id,
+    parcel_tracking,
+    transporter,
+    priority, 
+    date_purchase,
+    date_shipping,
+    date_delivery,
+    date_cancelled,
+    month_purchase,
+    quantity,
+    nb_models (nbr de model_name)
+6. Mettre à jour le schéma

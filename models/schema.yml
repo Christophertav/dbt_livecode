@@ -1,0 +1,41 @@
+version: 2
+sources:
+  - name: data_circle
+    schema: raw_data_circle
+    description: dataset de circle
+    tables:
+      - name: cc_parcel
+        identifier: raw_cc_parcel
+        description: suivi des colis
+        tests: 
+          - unique: 
+              column_name: parcel_id
+          - not_null:
+              column_name: parcel_id
+      - name: cc_parcel_product
+        identifier: raw_cc_parcel_product
+        description: infos sur les produits livrés
+        tests:
+          - unique: 
+              column_name: (ParCEL_id || '-' || Model_mAME)
+          - not_null:
+              column_name: (ParCEL_id || '-' || Model_mAME)
+models:
+  - name: stg_data_circle__cc_parcel
+    columns:
+      - name: parcel_id
+        tests:
+          - unique
+          - not_null
+  - name: stg_data_circle__cc_parcel_product
+    tests:
+      - unique: 
+          column_name: (parcel_id || '-' || model_name)
+      - not_null:
+          column_name: (parcel_id || '-' || model_name)
+  - name: stg_data_products_by_parcel
+    columns:
+      - name: parcel_id
+        tests:
+          - unique
+          - not_null
